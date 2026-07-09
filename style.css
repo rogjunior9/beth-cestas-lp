@@ -452,6 +452,7 @@ h3 { font-family: var(--font-title); font-weight: 700; line-height: 1.03; }
 }
 
 .btn { gap: 10px; }
+.header-cta, .mobile-cta { gap: 8px; }
 
 .btn-primary,
 .header-cta,
