@@ -29,30 +29,47 @@
     <link rel="preload" as="image" href="images/optimized/cesta-cafe-manha-flores-beth-320.webp" imagesrcset="images/optimized/cesta-cafe-manha-flores-beth-320.webp 320w, images/optimized/cesta-cafe-manha-flores-beth-480.webp 480w, images/optimized/cesta-cafe-manha-flores-beth-640.webp 640w, images/optimized/cesta-cafe-manha-flores-beth-800.webp 800w, images/optimized/cesta-cafe-manha-flores-beth-960.webp 960w" imagesizes="(max-width: 619px) 315px, (max-width: 1019px) 38vw, 420px" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Tag Manager -->
+    <!-- Tracking Scripts (Delayed for Performance) -->
     <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-PFCN95GR');
-    </script>
-    <!-- End Google Tag Manager -->
+        // Initialize dataLayer
+        window.dataLayer = window.dataLayer || [];
+        
+        // Initialize Meta Pixel stub
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window,document,'script');
 
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1602233334659836');
-        fbq('track', 'PageView');
+        var loadTrackingTimer = setTimeout(loadTrackingScripts, 3500);
+        var interactionEvents = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+        
+        function loadTrackingScripts() {
+            if (window.trackingScriptsLoaded) return;
+            window.trackingScriptsLoaded = true;
+            clearTimeout(loadTrackingTimer);
+            interactionEvents.forEach(function(event) {
+                window.removeEventListener(event, loadTrackingScripts);
+            });
+            
+            // GTM
+            (function(w,d,s,l,i){var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PFCN95GR');
+            
+            window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+
+            // Meta Pixel (Load script and init)
+            var t=document.createElement('script');t.async=!0;
+            t.src='https://connect.facebook.net/en_US/fbevents.js';
+            var s=document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(t,s);
+            
+            fbq('init', '1602233334659836');
+            fbq('track', 'PageView');
+        }
+
+        interactionEvents.forEach(function(event) {
+            window.addEventListener(event, loadTrackingScripts, { once: true, passive: true });
+        });
     </script>
-    <!-- End Meta Pixel Code -->
 
     <script type="application/ld+json">
     {
@@ -388,6 +405,7 @@
             <div><h2>Contato</h2><a class="js-whatsapp" data-lead-whatsapp="rodape_whatsapp" href="https://wa.me/5531984041009?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20atendimento%20da%20Beth." target="_blank" rel="noopener">(31) 98404-1009</a><a href="https://www.instagram.com/beth.tabuasepresentes/" target="_blank" rel="noopener">@beth.tabuasepresentes</a><span>Lagoa Santa, Vespasiano e região</span></div>
         </div>
         <div class="container footer-bottom"><p>© 2026 Beth Tábuas e Presentes. Todos os direitos reservados.</p></div>
+        <!-- Desenvolvido por Rogério Júnior - www.rogeriojunior.com.br -->
     </footer>
 
         <a class="floating-whatsapp js-whatsapp" data-lead-whatsapp="botao_flutuante" href="https://wa.me/5531984041009?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20as%20cestas%20da%20Beth." target="_blank" rel="noopener" aria-label="Fale com a Beth pelo WhatsApp">
